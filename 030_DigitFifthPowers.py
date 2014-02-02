@@ -11,3 +11,19 @@ __author__ = 'johan'
 # The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 #
 # Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
+
+# 0^5 =     0
+# 1^5 =     1
+# 2^5 =    32
+# 3^5 =   243
+# 4^5 =  1024
+# 5^5 =  3125
+# 6^5 =  7776
+# 7^5 = 16807
+# 8^5 = 32768
+# 9^5 = 59049
+
+# Possible 2 digit numbers contain 0, 1, 2
+# Possible 3 digit numbers contain 0, 1, 2, 3
+# Possible 4 digit numbers contain 0, 1, 2, 3, 4, 5 (max 3), 6 (max 1)
+# Possible 5 digit numbers contain 0, 1, 2, 3, 4, 5, 6, 7, 8 (max 3), 9 (max 1)

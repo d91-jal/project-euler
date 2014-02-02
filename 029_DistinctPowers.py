@@ -39,8 +39,6 @@ def brute_force(xmin, xmax, ymin, ymax):
 
             if temp not in result.keys():
                 result[temp] = [(x, y)]
-            else:
-                print(temp, ":", x, y)
 
     return result
 
