@@ -27,6 +27,9 @@ __author__ = 'johan'
 #
 # 9 * 49 = 441
 # 9801 - 441 = 9360
+#
+# Since the brute force method gives less total combinations there are obviously other cases.
+
 
 
 

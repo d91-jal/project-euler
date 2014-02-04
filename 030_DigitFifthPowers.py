@@ -23,7 +23,27 @@ __author__ = 'johan'
 # 8^5 = 32768
 # 9^5 = 59049
 
-# Possible 2 digit numbers contain 0, 1, 2
-# Possible 3 digit numbers contain 0, 1, 2, 3
-# Possible 4 digit numbers contain 0, 1, 2, 3, 4, 5 (max 3), 6 (max 1)
-# Possible 5 digit numbers contain 0, 1, 2, 3, 4, 5, 6, 7, 8 (max 3), 9 (max 1)
+def calc_exp_sum(number, exp):
+    result = 0
+    temp = number
+
+    while(temp >= 1):
+        result += (temp % 10) ** exp
+        temp //= 10
+
+    return result
+
+#print(calc_exp_sum(1634, 4))
+#print(calc_exp_sum(8208, 4))
+#print(calc_exp_sum(9474, 4))
+
+exp = 5
+maxval = 6 * (9 ** exp) # Upper bound is six nines, since seven nines will still yield a six-digit number.
+total = 0
+
+for i in range(10, maxval + 1):
+    if calc_exp_sum(i, exp) == i:
+        total += i
+        print(i)
+
+print(total)
