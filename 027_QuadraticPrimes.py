@@ -36,7 +36,7 @@ __author__ = 'johan'
 
 from ProjectEuler.primes import eratosthenes_sieve
 
-primes = eratosthenes_sieve(100000)
+primes = [p for p in eratosthenes_sieve(100000)]
 ax = [x for x in range(-999, 1001, 2)]
 bx = [-x for x in primes if x < 1000]
 bx.extend([-x for x in bx])

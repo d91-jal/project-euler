@@ -8,7 +8,7 @@ __author__ = 'johan'
 from ProjectEuler.primes import eratosthenes_sieve
 
 
-a = eratosthenes_sieve(110000)
+a = [p for p in eratosthenes_sieve(110000)]
 print(len(a), a[-1])
 
 if len(a) > 10000: print('10001st prime:', a[10000])

@@ -15,7 +15,7 @@ def find_prime_factors(number):
     for i in range(2, upper + 1):
         # If the number is divisible by the current i
         # then it is a candidate...
-        if(number % i == 0):
+        if number % i == 0:
             new_factor = True
 
             for p in prime_factors:

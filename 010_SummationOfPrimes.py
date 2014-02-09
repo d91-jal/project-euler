@@ -6,7 +6,7 @@ __author__ = 'johan'
 
 from ProjectEuler.primes import eratosthenes_sieve
 
-a = eratosthenes_sieve(2000000)
+a = [p for p in eratosthenes_sieve(2000000)]
 print(len(a), a[-1])
 
 print(sum(a))
