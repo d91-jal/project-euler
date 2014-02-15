@@ -17,9 +17,10 @@ __author__ = 'johan'
 
 # Base number:
 #   Must start with a 9.
-#   If two digits then must be in range 91 - 98
-#   If three digits then must be in range 918 - 987
+#   If two digits then we will end up with 2 + 3 + 3 (+ 3) = 8 or 11 digits.
+#   If three digits then we will end up with 3 + 4 (+ 4) = 7 or 11 digits.
 #   If four digits then must be in range 9182 - 9876
+
 
 def is_pan_digital(text):
     return ''.join(sorted(text)) == '123456789'
@@ -34,7 +35,7 @@ def generate_prod(start, end, step):
 
         while len(text) <= 9:
             num = j * i
-            text = text + str(num)
+            text += str(num)
 
             if is_pan_digital(text):
                 #print(i, j, text)
@@ -47,16 +48,6 @@ def generate_prod(start, end, step):
 
 
 result = generate_prod(9876, 9182, -1)
-temp = generate_prod(987, 918, - 1)
-
-if temp > result:
-    result = temp
-
-temp = generate_prod(98, 91, -1)
-
-if temp > result:
-    result = temp
-
 print(result)
 
 
