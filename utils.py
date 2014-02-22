@@ -19,7 +19,7 @@ def is_pan_digital_number(num):
     if num > 987654321:
         return False
 
-    result = [0 for i in range(1, math.ceil(math.log(num, 10)) + 1)]
+    result = [0] * (math.ceil(math.log(num, 10))) # Represents 1 - number of digits.
 
     while num >= 1:
         digit = num % 10
@@ -31,6 +31,11 @@ def is_pan_digital_number(num):
         num //= 10
 
     return sum(result) == len(result)
+
+
+def generate_pan_digital_numbers(length):
+    result = []
+
 
 
 #print(is_pan_digital_number(1123456))
