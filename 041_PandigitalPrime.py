@@ -8,20 +8,8 @@ __author__ = 'johan'
 # 9 digits => 987654321
 
 from ProjectEuler.primes import eratosthenes_sieve, is_prime
-from ProjectEuler.utils import is_pan_digital_number
+from ProjectEuler.utils import generate_pan_digital_numbers
 from math import sqrt
-from itertools import permutations
-
-
-def generate_combos(start, end):
-    factor = 1
-    num = 0
-
-    for i in range(end, start - 1, -1):
-        num += i * factor
-        factor *= 10
-
-    return [int(''.join(p)) for p in permutations(str(num))]
 
 
 def find_largest_pan_digital_prime():
@@ -31,7 +19,7 @@ def find_largest_pan_digital_prime():
     pan_digs = []
 
     for i in range(1, 10):
-        pan_digs += generate_combos(1, i)
+        pan_digs += generate_pan_digital_numbers(1, i)
 
     for i in range(len(pan_digs)):
         temp = pan_digs[-i]

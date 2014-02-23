@@ -11,17 +11,9 @@ __author__ = 'johan'
 #
 # What is the total of all the name scores in the file?
 
-def ReadNamesFromFile(filename):
-    with open(filename, 'r') as f:
-        temp = f.read().replace('"', '')
+from ProjectEuler.utils import read_names_from_file, alpha_value
 
-    split = temp.split(',')
-    return split
-
-def AlphaValue(text):
-    return sum([ord(i) - 64 for i in text])
-
-a = ReadNamesFromFile('names.txt')
+a = read_names_from_file('names.txt')
 a.sort()
 
 #print(a)
@@ -30,7 +22,7 @@ result = 0
 i = 1
 
 for name in a:
-    result += (i * AlphaValue(name))
+    result += (i * alpha_value(name))
     i += 1
 
 print(result)

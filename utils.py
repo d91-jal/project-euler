@@ -1,6 +1,8 @@
 __author__ = 'johan'
 
 import math
+from itertools import permutations
+
 
 def is_pan_digital_string(text):
     compare_to = ''
@@ -33,9 +35,27 @@ def is_pan_digital_number(num):
     return sum(result) == len(result)
 
 
-def generate_pan_digital_numbers(length):
-    result = []
+def generate_pan_digital_numbers(low, high):
+    factor = 1
+    num = 0
 
+    for i in range(high, low - 1, -1):
+        num += i * factor
+        factor *= 10
+
+    return [int(''.join(p)) for p in permutations(str(num))]
+
+
+def read_names_from_file(filename):
+    with open(filename, 'r') as f:
+        temp = f.read().replace('"', '')
+
+    split = temp.split(',')
+    return split
+
+
+def alpha_value(text):
+    return sum([ord(i) - 64 for i in text])
 
 
 #print(is_pan_digital_number(1123456))
