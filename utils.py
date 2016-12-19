@@ -21,7 +21,7 @@ def is_pan_digital_number(num):
     if num > 987654321:
         return False
 
-    result = [0] * (math.ceil(math.log(num, 10))) # Represents 1 - number of digits.
+    result = [0] * (math.ceil(math.log(num, 10)))  # Represents 1 - number of digits.
 
     while num >= 1:
         digit = num % 10
@@ -37,13 +37,12 @@ def is_pan_digital_number(num):
 
 def generate_pan_digital_numbers(low, high):
     factor = 1
-    num = 0
+    num = ""
 
-    for i in range(high, low - 1, -1):
-        num += i * factor
-        factor *= 10
+    for i in range(low, high + 1):
+        num += str(i)
 
-    return [int(''.join(p)) for p in permutations(str(num))]
+    return [int(''.join(p)) for p in permutations(num)]
 
 
 def read_names_from_file(filename):
@@ -58,7 +57,7 @@ def alpha_value(text):
     return sum([ord(i) - 64 for i in text])
 
 
-#print(is_pan_digital_number(1123456))
-#print(is_pan_digital_number(7123456))
-#print(is_pan_digital_number(1234567890))
-#print(is_pan_digital_number(123456))
+# print(is_pan_digital_number(1123456))
+# print(is_pan_digital_number(7123456))
+# print(is_pan_digital_number(1234567890))
+# print(is_pan_digital_number(123456))
