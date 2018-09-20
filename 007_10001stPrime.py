@@ -8,7 +8,14 @@ __author__ = 'johan'
 from ProjectEuler.primes import eratosthenes_sieve
 
 
-a = [p for p in eratosthenes_sieve(110000)]
+a = [p for p in eratosthenes_sieve(11000000)]
 print(len(a), a[-1])
 
-if len(a) > 10000: print('10001st prime:', a[10000])
+if len(a) > 500000:
+    print('10001st prime:', a[10000])
+    print('prime 5\t\t\t:', a[4])
+    print('prime 50\t\t:', a[49])
+    print('prime 500\t\t:', a[499])
+    print('prime 5000\t\t:', a[4999])
+    print('prime 50000\t\t:', a[49999])
+    print('prime 500000\t:', a[499999])
