@@ -7,8 +7,41 @@
 #
 # Find the pair of pentagonal numbers, Pj and Pk, for which their sum and difference are pentagonal and
 # D = |Pk − Pj| is minimised; what is the value of D?
+#
+# TODO: Improve performance!
 
 
 def get_pentagonal(n):
     return (n * ((3 * n) - 1)) / 2
 
+
+# Generate a list of pentagonal 1 to size.
+def get_pentagonals(size):
+    pentagonals = []
+
+    for i in range(1, size + 1):
+        pentagonals.append(get_pentagonal(i))
+
+    return pentagonals
+
+
+# Loop over pentagonals, computing sum and difference of pairs and evaluate if those
+# are also pentagonals.
+def find_candidates(size):
+    pents = get_pentagonals(size)
+
+    for h in range(0, size):
+        for i in range(h, size):
+            plus = pents[i-h] + pents[i]
+            minus = pents[i] - pents[i-h]
+            # print(i-h, i, pents[i-h], pents[i])
+
+            if (minus in pents) and (plus in pents):
+                print("Found ", pents[i-h], pents[i])
+                return
+
+        print(h)
+    print("Nothing found.")
+
+
+find_candidates(10000)
