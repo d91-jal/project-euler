@@ -10,37 +10,26 @@
 #
 # TODO: Improve performance!
 
-
-def get_pentagonal(n):
-    return (n * ((3 * n) - 1)) / 2
-
-
-# Generate a list of pentagonal 1 to size.
-def get_pentagonals(size):
-    pentagonals = []
-
-    for i in range(1, size + 1):
-        pentagonals.append(get_pentagonal(i))
-
-    return pentagonals
+from ProjectEuler.utils import get_pentagonals
 
 
 # Loop over pentagonals, computing sum and difference of pairs and evaluate if those
-# are also pentagonals.
+# are also pentagonals. Loop using minimal offset between candidates, thus hitting the
+# smallest possible answer first.
 def find_candidates(size):
     pents = get_pentagonals(size)
 
     for h in range(0, size):
         for i in range(h, size):
-            plus = pents[i-h] + pents[i]
-            minus = pents[i] - pents[i-h]
+            pent_sum = pents[i-h] + pents[i]
+            pent_diff = pents[i] - pents[i-h]
             # print(i-h, i, pents[i-h], pents[i])
 
-            if (minus in pents) and (plus in pents):
-                print("Found ", pents[i-h], pents[i])
+            if (pent_sum in pents) and (pent_diff in pents):
+                print("Found ", pents[i-h], pents[i], "-->", pent_diff)
                 return
 
-        print(h)
+        # print(h)
     print("Nothing found.")
 
 

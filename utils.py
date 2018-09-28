@@ -4,6 +4,48 @@ import math
 from itertools import permutations
 
 
+def get_triangular(n):
+    return (n * (n + 1)) / 2
+
+
+def get_pentagonal(n):
+    return (n * ((3 * n) - 1)) / 2
+
+
+def get_hexagonal(n):
+    return n * ((2 * n) - 1)
+
+
+# Generate a list of triangular 1 to size.
+def get_triangulars(size):
+    triangulars = []
+
+    for i in range(1, size + 1):
+        triangulars.append(get_triangular(i))
+
+    return triangulars
+
+
+# Generate a list of pentagonal 1 to size.
+def get_pentagonals(size):
+    pentagonals = []
+
+    for i in range(1, size + 1):
+        pentagonals.append(get_pentagonal(i))
+
+    return pentagonals
+
+
+# Generate a list of hexagonal 1 to size.
+def get_hexagonals(size):
+    hexagonals = []
+
+    for i in range(1, size + 1):
+        hexagonals.append(get_hexagonal(i))
+
+    return hexagonals
+
+
 def is_pan_digital_string(text):
     compare_to = ''
     trim_text = text.strip().replace(' ', '')
@@ -36,7 +78,6 @@ def is_pan_digital_number(num):
 
 
 def generate_pan_digital_numbers(low, high):
-    factor = 1
     num = ""
 
     for i in range(low, high + 1):
