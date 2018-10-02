@@ -5,15 +5,15 @@ from itertools import permutations
 
 
 def get_triangular(n):
-    return (n * (n + 1)) / 2
+    return int((n * (n + 1)) / 2)
 
 
 def get_pentagonal(n):
-    return (n * ((3 * n) - 1)) / 2
+    return int((n * ((3 * n) - 1)) / 2)
 
 
 def get_hexagonal(n):
-    return n * ((2 * n) - 1)
+    return int(n * ((2 * n) - 1))
 
 
 # Generate a list of triangular 1 to size.
@@ -44,6 +44,10 @@ def get_hexagonals(size):
         hexagonals.append(get_hexagonal(i))
 
     return hexagonals
+
+
+def is_pentagonal(p):
+    return (math.sqrt((1.0/36.0) + ((2*p)/3)) + (1/6)) % 1 == 0
 
 
 def is_pan_digital_string(text):

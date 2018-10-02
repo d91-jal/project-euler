@@ -10,27 +10,31 @@
 #
 # TODO: Improve performance!
 
-from ProjectEuler.utils import get_pentagonals
+from ProjectEuler.utils import get_pentagonal, is_pentagonal
+import datetime
 
 
 # Loop over pentagonals, computing sum and difference of pairs and evaluate if those
 # are also pentagonals. Loop using minimal offset between candidates, thus hitting the
 # smallest possible answer first.
 def find_candidates(size):
-    pents = get_pentagonals(size)
+    print("Starting ", datetime.datetime.now())
 
-    for h in range(0, size):
-        for i in range(h, size):
-            pent_sum = pents[i-h] + pents[i]
-            pent_diff = pents[i] - pents[i-h]
-            # print(i-h, i, pents[i-h], pents[i])
+    for h in range(1, size-1):
+        # print("Processing an offset of ", h)
 
-            if (pent_sum in pents) and (pent_diff in pents):
-                print("Found ", pents[i-h], pents[i], "-->", pent_diff)
+        for i in range(h+1, size):
+            p1 = get_pentagonal(i-h)
+            p2 = get_pentagonal(i)
+
+            if is_pentagonal(p1+p2) and is_pentagonal(p2-p1):
+                print("Found ", p1, p2, p2-p1)
+                print("Stopping ", datetime.datetime.now())
                 return
 
-        # print(h)
     print("Nothing found.")
 
 
-find_candidates(10000)
+find_candidates(2200)
+
+
