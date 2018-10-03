@@ -16,8 +16,9 @@
 # Approach: Generate all possible combinations of prime + 2 * square until we find a missing odd composite.
 
 from ProjectEuler.primes import eratosthenes_sieve
+import math
 
-upper_bound = 200
+upper_bound = 10000
 primes = [p for p in eratosthenes_sieve(upper_bound) if p > 2]
 
 
@@ -27,8 +28,14 @@ def generate_odd_composites():
 
 
 def generate_goldbach():
-    goldbach_composites = [(p + 2*i*i) for p in primes for i in range(1, 5) if (p + 2*i*i) < upper_bound]
+    goldbach_composites = [(p + 2*i*i) for p in primes for i in range(1, int(math.sqrt(upper_bound)))
+                           if (p + 2*i*i) < upper_bound and (p + 2*i*i) not in primes]
     return goldbach_composites
 
 
-print(generate_goldbach())
+#print(primes)
+#print(generate_goldbach())
+odd_composites = generate_odd_composites()
+goldbach = generate_goldbach()
+non_goldbach_composites = [comp for comp in odd_composites if comp not in goldbach]
+print(non_goldbach_composites)
