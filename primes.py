@@ -34,13 +34,16 @@ def is_prime(num, primes):
     return True
 
 
-def find_prime_factors(number):
-    upper = math.floor(math.sqrt(number))
+def find_prime_factors(number, primes):
+    upper = math.ceil(math.sqrt(number) * 2)
     prime_factors = []
 
     # Loop over all integers from 2 to the truncated
     # square root of the supplied number.
-    for i in range(2, upper + 1):
+    for i in primes:
+        if i > upper:
+            break
+
         # If the number is divisible by the current i
         # then it is a candidate...
         if number % i == 0:
@@ -54,6 +57,9 @@ def find_prime_factors(number):
 
             if new_factor:
                 prime_factors.append(i)
+
+    if len(prime_factors) == 0:
+        prime_factors.append(number)
 
     return prime_factors
 
