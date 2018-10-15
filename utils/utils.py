@@ -102,6 +102,16 @@ def alpha_value(text):
     return sum([ord(i) - 64 for i in text])
 
 
+def mod_pow(base, exp, mod):
+    result = base
+
+    for i in range(2, exp+1):
+        result = int((result * base) % mod)
+
+    return result
+
+
+# print(mod_pow(100, 100, 1000000))
 # print(is_pan_digital_number(1123456))
 # print(is_pan_digital_number(7123456))
 # print(is_pan_digital_number(1234567890))
