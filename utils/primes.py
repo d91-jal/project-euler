@@ -64,34 +64,10 @@ def find_prime_factors(number, primes):
     return prime_factors
 
 
-def eratosthenes_sieve_old(upper):
-    remaining = [1, 2] + ([i for i in range(3, upper + 1, 2)])
-    #print(remaining)
-    stop_value = math.ceil(math.sqrt(upper + 1))
-    #print(stop_value)
-    index = 1
-    latest = remaining[2]
-    print('Verifying primes from 2 to {0} will filter out all primes from 2 to {1}'.format(stop_value, upper))
+# a = eratosthenes_sieve(2000000)
+# print(len(a), a[-1])
 
-    while latest <= stop_value:
-        #print(latest)
-        # Scratch all multiples of latest
-        for i in range(len(remaining) - 1, index + 1, -1):
-            if(remaining[i] % latest == 0):
-                remaining.pop(i)
-
-        index += 1
-        latest = remaining[index]
-
-        if (index % 10) == 0:
-            print('Verified {0} primes, last prime = {1}'.format(index, latest))
-
-    return remaining
-
-#a = eratosthenes_sieve(2000000)
-#print(len(a), a[-1])
-
-#if len(a) > 10000: print('10001st prime:', a[10000])
+# if len(a) > 10000: print('10001st prime:', a[10000])
 
 
 

@@ -8,25 +8,52 @@
 # What 12-digit number do you form by concatenating the three terms in this sequence?
 
 from ProjectEuler.utils.primes import eratosthenes_sieve
+from ProjectEuler.utils.utils import sort_as_string
 
 
 def evaluate_candidates():
     primes = [p for p in eratosthenes_sieve(9999) if p > 1000]
     result = []
+    counter = 0
 
     for p in primes:
-        for offset in range(1000, 4500, 2):
-            if p + offset in primes:
-                if sort_num(p) == sort_num(p + offset):
-                    if p + 2 * offset in primes:
-                        if sort_num(p) == sort_num(p + 2 * offset):
-                            result.append([p, p + offset, p + 2 * offset])
+        sorted_p = sort_as_string(p)
 
+        for offset in range(1000, 4500, 2):
+            counter += 1
+            x1 = p + offset
+            x2 = p + (2 * offset)
+
+            if x2 > 9999:
+                break
+
+            if x1 in primes:
+                if sorted_p == sort_as_string(x1):
+                    if x2 in primes:
+                        if sorted_p == sort_as_string(x2):
+                            result.append([p, x1, x2])
+
+    print(counter)
     return result
 
 
-def sort_num(num):
-    return ''.join(sorted(str(num)))
+def minimize_search_space_first():
+    primes = [p for p in eratosthenes_sieve(9999) if p > 1000]
+    prime_permutations = {}
+
+    for p in primes:
+        key = sort_as_string(p)
+
+        if key not in prime_permutations:
+            prime_permutations[key] = [p]
+        else:
+            prime_permutations[key].append(p)
+
+    for x, y in prime_permutations.items():
+        if len(y) >= 3:
+            if y[2]-y[1] == y[1]-y[0]:
+                print(y)
 
 
-print(evaluate_candidates())
+minimize_search_space_first()
+# print(evaluate_candidates())

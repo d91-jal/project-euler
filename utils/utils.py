@@ -111,6 +111,10 @@ def mod_pow(base, exp, mod):
     return result
 
 
+def sort_as_string(num):
+    return ''.join(sorted(str(num)))
+
+
 # print(mod_pow(100, 100, 1000000))
 # print(is_pan_digital_number(1123456))
 # print(is_pan_digital_number(7123456))
