@@ -37,6 +37,9 @@ def evaluate_candidates():
     return result
 
 
+# Group all primes in the search space by their character content, and check if
+# any group fulfills the given requirement of having three primes differing by
+# the same amount. Note that each group may consist of more than three candidates.
 def minimize_search_space_first():
     primes = [p for p in eratosthenes_sieve(9999) if p > 1000]
     prime_permutations = {}
@@ -51,8 +54,15 @@ def minimize_search_space_first():
 
     for x, y in prime_permutations.items():
         if len(y) >= 3:
-            if y[2]-y[1] == y[1]-y[0]:
-                print(y)
+
+            # Check if there are three items with the same offset in the current tuple.
+            # TODO: This should be possible to do with a map/reduce construct.
+            for i in range(0, len(y)-2):
+                for j in range(i+1, len(y)-1):
+                    offset = y[j] - y[i]
+
+                    if y[j] + offset in y:
+                        print(y[i], y[j], y[j] + offset)
 
 
 minimize_search_space_first()
