@@ -11,6 +11,7 @@ from ProjectEuler.utils.primes import eratosthenes_sieve
 from ProjectEuler.utils.utils import sort_as_string
 
 
+# Naive brute force approach.
 def evaluate_candidates():
     primes = [p for p in eratosthenes_sieve(9999) if p > 1000]
     result = []
