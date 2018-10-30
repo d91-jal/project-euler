@@ -12,11 +12,16 @@ from ProjectEuler.utils.primes import eratosthenes_sieve
 
 def find_prime_as_sum_of_consecutive_primes(ceiling):
     primes = [p for p in eratosthenes_sieve(ceiling)]
-    max_length = 0
+    max_length = 1
+    total = 0
 
     for i in range(0, len(primes)):
-        for j in range(i+1, len(primes)):
-            next_sum = sum(primes[i:j])
+        # If no better solution is possible, we're done.
+        if i > (len(primes) - max_length):
+            break
+
+        for j in range(i + max_length, len(primes)):
+            next_sum = sum(primes[i:j+1])
 
             if next_sum > ceiling:
                 break
@@ -25,7 +30,12 @@ def find_prime_as_sum_of_consecutive_primes(ceiling):
                 if j - i > max_length:
                     max_length = j - i
                     total = next_sum
-                    print(total, j-i)
+                    # print(total, i, j, new_prime)
+
+    return total
 
 
-find_prime_as_sum_of_consecutive_primes(999999)
+print(find_prime_as_sum_of_consecutive_primes(999))
+print(find_prime_as_sum_of_consecutive_primes(9999))
+print(find_prime_as_sum_of_consecutive_primes(99999))
+print(find_prime_as_sum_of_consecutive_primes(999999))
