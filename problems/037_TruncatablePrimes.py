@@ -11,8 +11,7 @@ __author__ = 'johan'
 # Observation: No even numbers may be present in the primes.
 # Optimizations to be made?
 
-from ProjectEuler.utils.primes import eratosthenes_sieve
-
+from utils.primes import eratosthenes_sieve
 
 def truncate_left(num):
     if num < 10:
