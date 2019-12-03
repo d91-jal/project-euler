@@ -21,7 +21,7 @@ m = [
 ]
 
 
-def FindMaxPath(m):
+def find_max_path(m):
     for row in range(len(m) - 2, -1, -1):
         # print('Row =', row)
         for i in range(len(m[row])):
@@ -32,6 +32,6 @@ def FindMaxPath(m):
     return m[0]
 
 
-a = FindMaxPath(m)
+a = find_max_path(m)
 print(a)
 # print(sum([i[0] for i in m]))
