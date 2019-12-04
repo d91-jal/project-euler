@@ -33,8 +33,8 @@ def generate_goldbach():
     return goldbach_composites
 
 
-#print(primes)
-#print(generate_goldbach())
+# print(primes)
+# print(generate_goldbach())
 odd_composites = generate_odd_composites()
 goldbach = generate_goldbach()
 non_goldbach_composites = [comp for comp in odd_composites if comp not in goldbach]

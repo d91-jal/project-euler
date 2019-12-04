@@ -27,7 +27,7 @@ for i in range(10, 99):
         j10 = part(j, 2)
 
         if j1 != 0 and i1 != i10 and i1 == j10 and i / j == i10 / j1:
-            result.append([i, j]) # Use the smaller fraction since we aim to reduce the product afterwards.
+            result.append([i, j])  # Use the smaller fraction since we aim to reduce the product afterwards.
 
 print(result)
 

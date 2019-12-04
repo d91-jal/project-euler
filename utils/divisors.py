@@ -1,5 +1,6 @@
 __author__ = 'johan'
 
+
 def iter_divisors(max_size=10000):
     """iter_divisors
     Iterator over divisors of a number:
@@ -13,7 +14,8 @@ def iter_divisors(max_size=10000):
         less or equal to max_size.
     """
     divisors = []
-    while len(divisors) < max_size + 1: divisors.append([])
+    while len(divisors) < max_size + 1:
+        divisors.append([])
 
     # 0 has no divider
     yield divisors[0]

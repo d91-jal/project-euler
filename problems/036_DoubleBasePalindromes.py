@@ -28,7 +28,7 @@ def generate_bin_palindromes(max_len):
     result = ['1']
     sub_len = max_len // 2
 
-    for i in range(1, 2 ** (sub_len), 2):
+    for i in range(1, 2 ** sub_len, 2):
         # Remove the '0b' prefix from the binary string.
         temp = bin(i)[2:]
         rev = temp[::-1]
