@@ -4,7 +4,9 @@ __author__ = 'johan'
 # of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
+from profilehooks import profile
 
+@profile
 def simple_solution(upper_bound):
     result = 0
 
@@ -18,6 +20,7 @@ def simple_solution(upper_bound):
     return result
 
 
+@profile
 def sneaky_solution(upper_bound):
     base = [3, 5, 6, 9, 10, 12, 15]
     new = [0]
@@ -33,12 +36,14 @@ def sneaky_solution(upper_bound):
                 break
 
         i += 1
-        # print(new)
 
     return sum(new)
 
 
-print(simple_solution(1000))
+#def __main__():
 print(sneaky_solution(1000))
+
+#print(simple_solution(1000))
+#print(sneaky_solution(1000))
 
 
